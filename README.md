@@ -13,7 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 pyenv virtualenv nlp-3.7.3
 ``` 
 
-We levarage existing NLP techniques to build our tool. Hence we need to install commom NLP tools. (eg., nltk, allennlp, spacy,stanza) and some useful util tool to process tree and graph structure. (eg., ete3,networkx). Please install the requirements before deploying it.
+2. We levarage existing NLP techniques to build our tool. Hence we need to install commom NLP tools. (eg., nltk, allennlp, spacy,stanza) and some useful util tool to process tree and graph structure. (eg., ete3,networkx). Please install the requirements before deploying it.
 ``` 
 pip install -r requirements.txt
 ``` 
