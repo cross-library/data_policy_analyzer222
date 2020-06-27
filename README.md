@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-1.Create a clean virtual python environment. It's suggested to use pyenv to build virtualenv(you can also use other tools).
+1. Create a clean virtual python environment. It's suggested to use pyenv to build virtualenv(you can also use other tools).
 ``` 
 pyenv virtualenv nlp-3.7.3
 ``` 
@@ -22,18 +22,18 @@ pip install -r requirements.txt
 Here we will explain how to run the each module for this system.
 
 ### Part one: customized ner model
-The ner model is a sensitive data extracter. Put the sentences in to ./data/inputSentence.txt, then run extract_sensitive_data.py. For example, "Do not store Twitter passwords." the output will be {'Twitter passwords'}
+The ner model is a sensitive data extracter. Put the sentences in to ./customizeNER/data/inputSentence.txt, then run extract_sensitive_data.py. For example, "Do not store Twitter passwords." the output will be {'Twitter passwords'}
 ```
-python3 extract_sensitive_data.py -i "Do not store Twitter passwords."
+python3 extract_sensitive_data.py
 ```
 ### Part two: policy statement discovery
-Put the pre-processed Tos docs under the folder "raw data/40_pre_processed_data", then run extract_policy_statement.py. The results will be in the folder "raw data/40_post_processed_data/policy_statement_discovery". The column "predict_label" will shown whether the sentence is related to third party data sharing.
+Put the pre-processed Tos docs under the folder "./filterSentenceByVerb/data/inputSentence.xlsx", then run extract_policy_statement.py. The results will be in the folder "./filterSentenceByVerb/data/outputSentence_policy.xlsx". 
 
 ```
 python3 extract_policy_statement.py
 ```
 ### Part three: condition extraction
-After we found the sentences related to the data sharing and collection. We want to extract the condition of such usage. We run "conditionExtrection/condition_extractor.py" to extract such condition. 
+After we found the sentences related to the data sharing and collection. We want to extract the condition of such usage. Put outputSentence_policy.xlsx(step 2) under ./conditionExtrection/data/ and then run condition_extractor.py. The data-condition pair will be in ./conditionExtrection/data/condition_data_pair.xlsx
 
 ```
 python3 condition_extractor.py
@@ -41,7 +41,7 @@ python3 condition_extractor.py
 
 ## Authors
 
-* **Yue Xiao** - *Initial work* - [PurpleBooth](https://github.com/xiaoyue10131748)
+* **anonymous** - *Initial work*
 
 ## Acknowledgments
 
