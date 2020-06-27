@@ -12,7 +12,6 @@ These instructions will get you a copy of the project up and running on your loc
 ``` 
 pyenv virtualenv nlp-3.7.3
 ``` 
-
 2. We levarage existing NLP techniques to build our tool. Hence we need to install commom NLP tools. (eg., nltk, allennlp, spacy,stanza) and some useful util tool to process tree and graph structure. (eg., ete3,networkx). Please install the requirements before deploying it.
 ``` 
 pip install -r requirements.txt
@@ -22,30 +21,18 @@ pip install -r requirements.txt
 
 Here we will explain how to run the each module for this system.
 
-### Part One: web crawler 
-
-The crawler will extract all the text from website and split them into sentence. Put urls you want to crawl in the file "domainList_developer.txt" and specify which folder you want to store the crawl results. Each url will generate a csv file that contains sentences of the webpage.
-
-```
-python3 execute.py -i domainList_developer.txt -o /Users/huthvincent/Desktop/
-
-```
-
-### Part Two: customized ner model
-The ner model is a sensitive data extracter. You can input a sentence as a paramater, and it will show you the sentensive data entity in the sentence. 
-
+### Part one: customized ner model
+The ner model is a sensitive data extracter. Put the sentences in to ./data/inputSentence.txt, then run extract_sensitive_data.py. For example, "Do not store Twitter passwords." the output will be {'Twitter passwords'}
 ```
 python3 extract_sensitive_data.py -i "Do not store Twitter passwords."
 ```
-The output is {'Twitter passwords'}
-
-### Part Three: policy statement discovery
+### Part two: policy statement discovery
 Put the pre-processed Tos docs under the folder "raw data/40_pre_processed_data", then run extract_policy_statement.py. The results will be in the folder "raw data/40_post_processed_data/policy_statement_discovery". The column "predict_label" will shown whether the sentence is related to third party data sharing.
 
 ```
 python3 extract_policy_statement.py
 ```
-### Part Four: condition extraction
+### Part three: condition extraction
 After we found the sentences related to the data sharing and collection. We want to extract the condition of such usage. We run "conditionExtrection/condition_extractor.py" to extract such condition. 
 
 ```
